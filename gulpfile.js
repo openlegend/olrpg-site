@@ -317,17 +317,17 @@ gulp.task('copy-client', function () {
     });
 });
 
-gulp.task('copy-server', function () {
-    return gulp.src([
-      '.openshift',
-      './package.json',
-      './app.yaml',
-      './server/**/*',
-    ], { base: './' })
-    .pipe(cache('copy-server'))
-    .pipe(gulp.dest(path.distBase)) // output the assets
-    .pipe(browserSync.reload({ stream: true }));
-});
+// gulp.task('copy-server', function () {
+//     return gulp.src([
+//       '.openshift',
+//       './package.json',
+//       './app.yaml',
+//       './server/**/*',
+//     ], { base: './' })
+//     .pipe(cache('copy-server'))
+//     .pipe(gulp.dest(path.distBase)) // output the assets
+//     .pipe(browserSync.reload({ stream: true }));
+// });
 
 gulp.task('cache-bust', function(){
   return gulp.src( path.distClient + 'index.html')
@@ -401,7 +401,8 @@ gulp.task('timestamp', function(){
 
 gulp.task('compile-all', function (callback) {
   return runSequence(
-    ['less', 'html', 'es6', 'yaml', 'move', 'copy-client', 'copy-server'],
+    // ['less', 'html', 'es6', 'yaml', 'move', 'copy-client', 'copy-server'],
+    ['less', 'html', 'es6', 'yaml', 'move', 'copy-client'],
     'timestamp',
     callback
   );
@@ -478,12 +479,12 @@ gulp.task('serve', ['api'], function (done) {
   browserSync(browserSyncConfig, done);
 });
 
-gulp.task('lint-api', function () {
-  var settings = { fail: argv.production ? true : false };
-  return gulp.src([apiPath.source, '!server/public/docs/**/*'])
-    .pipe(jshint())
-    .pipe(jshint.reporter(stylish, settings));
-});
+// gulp.task('lint-api', function () {
+//   var settings = { fail: argv.production ? true : false };
+//   return gulp.src([apiPath.source, '!server/public/docs/**/*'])
+//     .pipe(jshint())
+//     .pipe(jshint.reporter(stylish, settings));
+// });
 
 gulp.task('api', function () {
   // check for --debug || --debug-brk flag, if present, run node debugger
@@ -517,10 +518,10 @@ gulp.task('watch', function () {
     console.log( file.event + ' in ' + file.relative + ', re-compiling YAML...');
     gulp.start(['yaml','timestamp']);
   });
-  watch([apiPath.source], standardWatchOptions, function (file) {
-    console.log( file.event + ' in ' + file.relative + ', linting API files');
-    gulp.start(['lint-api']);
-  });
+  // watch([apiPath.source], standardWatchOptions, function (file) {
+  //   console.log( file.event + ' in ' + file.relative + ', linting API files');
+  //   gulp.start(['lint-api']);
+  // });
   // watch(['./package.json'], standardWatchOptions, function (file) {
   //   console.log('package.json changed. Rebuilding systemjs config for jspm dependency changes');
   //   gulp.start('bundle');
@@ -553,7 +554,8 @@ gulp.task('bundle', ['compile-production'], function () {
 });
 
 gulp.task('run', function (callback) {
-  tasks = ['lint-api','lint-ui'];
+  // tasks = ['lint-api','lint-ui'];
+  tasks = ['lint-ui'];
   // only run `build` in production context
   if ( argv.production ) {
     tasks.push('bundle');
