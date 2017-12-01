@@ -1,0 +1,49 @@
+// add module specific styles for home route
+
+.home-bg {
+  background: #424242 url(/assets/img/open_legend_saryth_navigator_night_in_forest.jpg) left top no-repeat fixed;
+  background-size: cover;
+  .banner-logo {
+    width: 70%;
+  }
+  .tri-grid  {
+    [layout-padding] > div {
+      background: #424242;
+      padding: 0;
+      width: 100%;
+    }
+    a {
+      transition: all 0.2s ease-in-out;
+      opacity: 0.82;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+  .fade-img {
+    background: #424242;
+    padding: 0;
+    width: 100%;
+    > a {
+      transition: all 0.2s ease-in-out;
+      opacity: 0.7;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@media ( max-width: 1024px ) {
+  .tri-grid  {
+    [layout-padding] > div {
+      width: 33%;
+    }
+  }
+}
+
+@media ( max-width: 1024px ) {
+  .home-bg .banner-logo {
+    width: 100%;
+  }
+}

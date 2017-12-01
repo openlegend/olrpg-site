@@ -1,0 +1,132 @@
+md-toolbar {
+  &.main {
+    .md-toolbar-tools {
+      h1 {
+        padding-left: 35px;
+      }
+    }
+    .menu-left {
+      position: absolute;
+      top: 7px;
+      left: 9px;
+    }
+    .menu-right {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      font-size: 15px;
+      md-icon {
+        width: 36px;
+        height: 36px;
+        margin-right: 4px;
+      }
+    }
+  }
+  &.top-secondary {
+    md-content {
+      overflow-y: hidden;
+      > span {
+        margin: 0;
+        display: block;
+        line-height: 37px;
+      }
+      > .md-button {
+        margin: 0;
+      }
+      &[layout-padding="lg"] {
+        padding: 15px 20px !important;
+      }
+    }
+  }
+  .left-search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+md-toolbar .left-search {
+  display: initial;
+  md-autocomplete {
+    margin: 15px;
+    min-width: ~"calc( 100% - 30px )" !important;
+  }
+}
+
+md-icon.md-primary-icon{
+  color: white !important;
+}
+.main-sidenav {
+  md-item {
+    width: 100%;
+  }
+}
+
+md-content.md-dark-theme .copyright,
+.main-sidenav .copyright {
+  margin: 30px 10px 10px;
+  a {
+    color: #ffe490;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+md-sidenav {
+  &.menu-open {
+    z-index: 62;
+  }
+  &[md-theme="dark"] {
+    background-color: rgb(66,66,66);
+  }
+}
+md-backdrop.md-sidenav-backdrop {
+  z-index: 61;
+}
+
+main-wrap > md-backdrop.md-opaque.md-dark-theme {
+  background-color: rgba(0,0,0,0.2);
+}
+
+md-sidenav > md-content > md-list {
+  margin-top:20px;
+  padding: 0px;
+}
+
+md-sidenav > md-toolbar {
+  // margin-bottom: 10px;
+}
+
+.bg-accent {
+  background: rgba(255,255,255,.1);
+}
+
+.dark-leather-bg {
+  // background: rgb(66,66,66) url('/assets/img/leather_1.jpg');
+  background: rgb(66,66,66) url('/assets/img/paper_2_green.jpg');
+  background-size: 300px 300px;
+}
+
+md-list.sliding-list {
+  transition: all 0.2s ease-in-out;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0;
+  &.expanded {
+    max-height: 500px;
+  }
+}
+
+md-list  md-list md-item {
+  padding-left: 20px;
+}
+
+
+.subnav-toggle {
+  margin-top: 3px;
+  float: right;
+  &.expanded {
+    transform: rotate( 180deg );
+  }
+}

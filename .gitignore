@@ -1,0 +1,14 @@
+node_modules
+bower_components
+dist
+/dist
+.idea
+.DS_STORE
+coverage
+jspm_packages
+.vagrant
+Dockerfile
+private_key
+.sync
+npm-debug.log
+google_client_secret.json
